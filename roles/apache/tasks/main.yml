@@ -1,0 +1,26 @@
+# roles/apache/tasks/main.yml
+- name: Ensure Apache is installed (Debian/Ubuntu)
+  ansible.builtin.apt:
+    name: apache2
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Ensure Apache is installed (RedHat/CentOS)
+  ansible.builtin.yum:
+    name: httpd
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Ensure Apache service is running and enabled (Debian/Ubuntu)
+  ansible.builtin.service:
+    name: apache2
+    state: started
+    enabled: yes
+  when: ansible_os_family == "Debian"
+
+- name: Ensure Apache service is running and enabled (RedHat/CentOS)
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: yes
+  when: ansible_os_family == "RedHat"

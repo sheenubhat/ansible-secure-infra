@@ -1,0 +1,6 @@
+---
+- name: Configure Webserver
+  hosts: all # Or your specific host group, e.g., webservers
+  become: yes
+  roles:
+    - apache

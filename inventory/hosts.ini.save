@@ -1,0 +1,8 @@
+
+
+
+ansible-playbook -i ansible-secure-infra/inventory/hosts.ini ansible-secure-infra/playbooks/webserver.yml
+
+
+[web]
+localhost ansible_connection = local
